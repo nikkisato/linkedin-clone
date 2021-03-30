@@ -9,6 +9,7 @@
   top: 0;
   z-index: 999;
   padding: 5px;
+  background-color: white;
 }
 
 .header__left {
