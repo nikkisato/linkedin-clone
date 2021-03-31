@@ -10,10 +10,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../features/userSlice';
 import { auth } from '../../firebase';
-
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice';
 function Header() {
   const dispatch = useDispatch();
-
+  const user = useSelector(selectUser);
+  console.log(user);
   const logoutOfApp = () => {
     dispatch(logout());
     auth.signOut();
@@ -28,7 +30,7 @@ function Header() {
         />
         <div className='header__search'>
           <SearchIcon />
-          <input type='text' />
+          <input type='text' placeholder='Search' />
         </div>
       </div>
       <div className='header__right'>
@@ -39,8 +41,8 @@ function Header() {
         <HeaderOption title='Notifications' Icon={NotificationsIcon} />
         <HeaderOption
           onClick={logoutOfApp}
-          avatar='https://pbs.twimg.com/profile_images/1328417902978973696/lMee7Kdz_400x400.jpg'
-          title='Account'
+          avatar={true}
+          title={user?.displayName}
         />
       </div>
     </div>

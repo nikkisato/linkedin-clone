@@ -6,11 +6,12 @@ import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
+
 function Post({ name, description, message, photoUrl }) {
   return (
     <div className='post'>
       <div className='post__header'>
-        <Avatar src={photoUrl}></Avatar>
+        <Avatar src={photoUrl}>{name[0]}</Avatar>
         <div className='post__info'>
           <h2>{name}</h2>
           <p>{description}</p>

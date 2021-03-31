@@ -14,7 +14,7 @@ import { selectUser } from '../../features/userSlice';
 function Feed() {
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState('');
-
+  const user = useSelector(selectUser);
   useEffect(() => {
     db.collection('posts')
       .orderBy('timestamp', 'desc')
@@ -30,10 +30,10 @@ function Feed() {
   const sendPost = e => {
     e.preventDefault();
     db.collection('posts').add({
-      name: 'Nikki sato',
-      description: 'WHOA',
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: '',
+      photoUrl: user.photoUrl || '',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput('');
